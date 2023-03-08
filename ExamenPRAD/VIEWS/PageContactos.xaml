@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ExamenPRAD.VIEWS.PageContactos">
+    
+    <ContentPage.Content>
+        
+        <StackLayout>
+            <Entry x:Name="txtid" IsVisible="false" TextColor="Blue"/>
+            
+            <Entry x:Name="txtnombre" 
+                   Placeholder="Nombres" 
+                   Keyboard="Text"
+                   TextColor="Blue"
+                   Margin="10,10,10,0"/>
+
+
+            <Entry x:Name="txtapellidos" Placeholder="Apellidos" Keyboard="Text"  TextColor="Blue"
+                   Margin="10,10,10,0"/>
+
+            
+            <Entry x:Name="txtedad" Placeholder="Edad" Keyboard="Numeric" TextColor="Blue"
+                   Margin="10,10,10,0"/>
+            
+            <Label Text="Pais" HorizontalOptions="Start" FontAttributes="Bold" TextColor="Gray" FontSize="Body"/>
+            <Picker Title="Seleccione Pais" TitleColor="Blue" Margin="10,10,10,0" x:Name="cbpais">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Honduras (504)</x:String>
+                        <x:String>Costa Rica(506)</x:String>
+                        <x:String>Guatemala(502)</x:String>
+                        <x:String>El Salvador(503)</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+            
+            <Label Text="Nota" HorizontalOptions="Start" FontAttributes="Bold" TextColor="Gray" FontSize="Body"/>
+            <Entry x:Name="txtnota" Placeholder="Nota" Keyboard="Text" TextColor="Blue" 
+                   Margin="5,5,10,0"/>
+            
+            <Label Text="Latitud" HorizontalOptions="Start" FontAttributes="Bold" TextColor="Gray" FontSize="Body"/>
+            <Entry x:Name="txtlatitud" Placeholder="Latitud" Keyboard="Text" TextColor="Blue" 
+                   Margin="5,5,5,0" IsEnabled="false"/>
+            
+            <Label Text="Longitud" HorizontalOptions="Start" FontAttributes="Bold" TextColor="Gray" FontSize="Body"/>
+            <Entry x:Name="txtlongitud" Placeholder="Longitud" Keyboard="Text" TextColor="Blue"
+                   Margin="5,5,5,0" IsEnabled="false"/>
+
+            <Button x:Name="SalvarContactos" Text="Salvar Contactos" Clicked="SalvarContactos_Clicked"                  
+                    Margin="5,5,5,0"
+                    BackgroundColor="LightSalmon"/>
+            
+            <Button x:Name="Actualizar" Text="Actualizar" Clicked="Actualizar_Clicked" IsVisible="False"                 
+                    Margin="5,5,5,0"
+                    BackgroundColor="LightSalmon"/>
+            
+            <Button x:Name="Eliminar" Text="Eliminar" Clicked="Eliminar_Clicked" IsVisible="False"                 
+                    Margin="5,5,5,0"
+                    BackgroundColor="LightSalmon"/>
+
+            <ListView x:Name="listcontactos" ItemSelected="listcontactos_ItemSelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    
+
+
+
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Text="{Binding id}" Grid.Row="0" Grid.Column="0" TextColor="Black"/>
+                                <Label Text="{Binding nombres}" Grid.Row="0" Grid.Column="1" TextColor="Blue"/>
+                                <Label Text="{Binding apellidos}" Grid.Row="0" Grid.Column="2" TextColor="Blue"/>
+                                <Label Text="{Binding nota}" Grid.Row="0" Grid.Column="3" TextColor="Gray"/>
+                                
+                                <Label Text="{Binding pais}" Grid.Row="0" Grid.Column="4"   TextColor="Gray"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
